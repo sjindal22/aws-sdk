@@ -22,26 +22,3 @@ func main() {
 	value := *op.Parameter.Value
 	fmt.Println(value)
 }
-
-/*
-	sess, err := session.NewSessionWithOptions(session.Options{
-		Config: aws.Config{Region: aws.String("us-east-1")},
-	})
-	if err != nil {
-		panic(err)
-	}
-
-	ssmsvc := ssm.New(sess, aws.NewConfig().WithRegion("us-east-1"))
-	param, err := ssmsvc.GetParameter(&ssm.GetParameterInput{
-		Name:           aws.String("/testaccount/env/dev"),
-		WithDecryption: aws.Bool(false),
-	})
-	if err != nil {
-		panic(err)
-	}
-
-	value := *param.Parameter.Value
-	fmt.Println(value)
-
-}
-*/
