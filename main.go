@@ -23,10 +23,21 @@ func createSession(r string, prof string) *session.Session {
 	return sess
 }
 
-/*func createSSMParameters() {
+func createSSMParameters(reg string, profile string, paramsList map[string]string) {
 
+	csess := ssm.New(createSession(reg, profile))
+	for name, val := range paramsList {
+		putParam, err := csess.PutParameter(&ssm.PutParameterInput{
+			Name:  aws.String(name),
+			Value: aws.String(val),
+			Type:  aws.String("String"),
+		})
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(putParam.Tier)
+	}
 }
-*/
 
 func getSSMParameters(r string, p string) {
 
@@ -47,5 +58,10 @@ func getSSMParameters(r string, p string) {
 
 func main() {
 
+	paramL := map[string]string{
+		"username": "username123",
+		"password": "password123",
+	}
+	createSSMParameters("us-east-1", "devops", paramL)
 	getSSMParameters("us-east-1", "devops")
 }
