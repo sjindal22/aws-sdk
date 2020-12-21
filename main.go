@@ -65,3 +65,5 @@ func main() {
 	createSSMParameters("us-east-1", "devops", paramL)
 	getSSMParameters("us-east-1", "devops")
 }
+
+// Reference https://github.com/ProjectThor/get-ssm-params
